@@ -1,0 +1,6 @@
+<de.rabbitchat.confighandler.ClientConfig>
+<serverHost>192.168.2.108</serverHost>
+<serverUser>Test</serverUser>
+<serverPass>blabla</serverPass>
+<defaultSendChannel>defaultChnl</defaultSendChannel>
+</de.rabbitchat.confighandler.ClientConfig>
