@@ -8,8 +8,8 @@ package de.rabbitchat.common.message;
  */
 public class ChatMessage extends Message {
 
-	public ChatMessage(int messageId, String messageRecipient, String messagePayload) {
-		super(messageId, MsgType.CHAT, messageRecipient, messagePayload);
+	public ChatMessage(int messageId,String messageSender, String messageRecipient, String messagePayload) {
+		super(messageId, MsgType.CHAT,messageSender, messageRecipient, messagePayload);
 	}
 
 }

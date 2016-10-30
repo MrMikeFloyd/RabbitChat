@@ -18,31 +18,31 @@ public class RcptMessageTest {
 
 	@Test
 	public final void testMessage() {
-		RcptMessage rm1 = new RcptMessage(1234, "Irgendwer", "Irgendwas.");
+		RcptMessage rm1 = new RcptMessage(1234, "Irgendwer","Simon" , "Irgendwas.");
 		assertNotNull(rm1);
 	}
 
 	@Test
 	public final void testGetId() {
-		RcptMessage rm2 = new RcptMessage(1234, "Irgendwer", "Irgendwas.");
+		RcptMessage rm2 = new RcptMessage(1234, "Irgendwer","Simon" , "Irgendwas.");
 		assertEquals(1234, rm2.getId());
 	}
 
 	@Test
 	public final void testGetType() {
-		RcptMessage rm3 = new RcptMessage(1234, "Irgendwer", "Irgendwas.");
+		RcptMessage rm3 = new RcptMessage(1234, "Irgendwer","Simon" , "Irgendwas.");
 		assertEquals(MsgType.RCPT, rm3.getType());
 	}
 
 	@Test
 	public final void testGetRecipient() {
-		RcptMessage rm4 = new RcptMessage(1234, "Irgendwer", "Irgendwas.");
-		assertEquals("Irgendwer", rm4.getRecipient());
+		RcptMessage rm4 = new RcptMessage(1234, "Irgendwer","Simon" , "Irgendwas.");
+		assertEquals("Simon", rm4.getRecipient());
 	}
 
 	@Test
 	public final void testGetPayload() {
-		RcptMessage rm5 = new RcptMessage(1234, "Irgendwer", "Irgendwas.");
+		RcptMessage rm5 = new RcptMessage(1234, "Irgendwer","Simon" , "Irgendwas.");
 		assertEquals("Irgendwas.", rm5.getPayload());
 	}
 
