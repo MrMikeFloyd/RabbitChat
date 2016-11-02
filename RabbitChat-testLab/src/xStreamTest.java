@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 import com.thoughtworks.xstream.XStream;
 
 import de.rabbitchat.common.message.Message;
@@ -9,13 +12,19 @@ public class xStreamTest {
 
 		XStream xstream = new XStream();
 
-		RcptMessage cm1 = new RcptMessage(123, "Simon", "Hallo Simon, Deine Mudder ist ein XML-File.");
+		//RcptMessage cm1 = new RcptMessage(123, "Simon", "Hallo Simon, Deine Mudder ist ein XML-File.");
+		
+		Map<String, String> m1 = new HashMap<String, String>();
+		
+		
+		m1.put("a","b");
+		m1.put("b","a");
 
-		String xml = xstream.toXML(cm1);
+		String xml = xstream.toXML(m1);
 
 		System.out.println(xml);
 
-		System.out.println("---------------------------\n");
+		/*System.out.println("---------------------------\n");
 
 		Message cm2 = (Message) xstream.fromXML(xml);
 
@@ -31,7 +40,7 @@ public class xStreamTest {
 		}
 		System.out.println(cm2.getType());
 		System.out.println(cm2.getPayload());
-
+*/
 	}
 
 }
