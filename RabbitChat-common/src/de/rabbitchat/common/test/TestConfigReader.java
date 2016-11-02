@@ -14,7 +14,7 @@ public class TestConfigReader {
 	public static void main(String[] args) {
 
 		try {
-			Configuration c1 = ConfigReader.readConfigFile();
+			Configuration c1 = ConfigReader.readClientConfigFile();
 			System.out.println(c1.getClass() + " " + c1.getConfType());
 
 		} catch (Exception e) {

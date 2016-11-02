@@ -9,16 +9,17 @@ package de.rabbitchat.confighandler;
  */
 public class Configuration {
 
+	// Configuration Type ([Client|Server])
 	ConfigurationType confType;
-
-	// Setter
-	protected void setConfType(ConfigurationType cType) {
-		this.confType = cType;
-	}
 
 	// Getter
 	public ConfigurationType getConfType() {
 		return confType;
+	}
+
+	// Setter
+	protected void setConfType(ConfigurationType cType) {
+		this.confType = cType;
 	}
 
 }

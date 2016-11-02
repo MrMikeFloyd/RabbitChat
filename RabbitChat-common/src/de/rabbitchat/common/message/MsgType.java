@@ -5,12 +5,13 @@ package de.rabbitchat.common.message;
  * Enumerator data type to indicate the message type.
  * </p>
  * <p>
- * CHAT = Regular Chat<br>
- * Message RCPT = Message Receipt<br>
+ * CHAT = Regular Chat Message<br>
+ * RCPT = Message Receipt<br>
+ * FAIL = Transmission with errors<br>
  * </p>
  * 
  * @author maik
  */
 public enum MsgType {
-	CHAT, RCPT
+	CHAT, RCPT, FAIL
 }
