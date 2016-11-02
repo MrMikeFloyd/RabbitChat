@@ -1,7 +1,7 @@
 package de.rabbitchat.client.console;
 
 import java.io.IOException;
-import java.util.concurrent.Callable;
+import java.text.SimpleDateFormat;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeoutException;
 
@@ -14,7 +14,7 @@ import de.rabbitchat.confighandler.ClientConfig;
  * @author KleinfeldS
  *
  */
-public class ClientRecv implements Callable<Integer> {
+public class ClientRecv  {
 
 	ClientConfig config;
 	LinkedBlockingQueue<Message> inputMsgQueue;
@@ -31,7 +31,7 @@ public class ClientRecv implements Callable<Integer> {
 	 * @param config
 	 * @throws Exception
 	 */
-	private  void startRecv() throws Exception{		
+	public void startRecv() throws Exception{		
 		receiver.call();
 		dequeue();
 	}
@@ -52,7 +52,9 @@ public class ClientRecv implements Callable<Integer> {
 			switch (m1.getType()) {
 			case CHAT:
 				System.out.println("Incoming Message from " + m1.getRecipient());
-				System.out.println("Created at: " + m1.getCrtDate().getTime());
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+				String date = sdf.format(m1.getCrtDate());
+				System.out.println("Created at: " + date);
 				System.out.println("---------\n" + m1.getPayload()+"\n---------\nReading confirmation is sent.");
 				String msg = "Message: " + m1.getId() + " was readed";
 				ClientSend.sendRcptMessage(config, m1.getId(), m1.getSender(), msg);
@@ -66,15 +68,5 @@ public class ClientRecv implements Callable<Integer> {
 				break;
 			}
 		}
-		
-	}
-
-	@Override
-	public Integer call() throws Exception {
-		startRecv();
-		return null;
-	}
-	
-	
-	
+	}	
 }

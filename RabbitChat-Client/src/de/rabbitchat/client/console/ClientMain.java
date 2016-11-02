@@ -24,7 +24,7 @@ public class ClientMain {
 		 * Load Client Configuration
 		 * config.xml must be in the program root folder
 		 */
-		ClientConfig config = new ClientConfig("", "", "", "", "");
+		ClientConfig config = new ClientConfig("", "", "", "", "", "");
 		try {
 			config = ConfigReader.readClientConfigFile();
 		} catch (FileNotFoundException e) {
@@ -53,10 +53,10 @@ public class ClientMain {
 			 */
 			switch(modus){
 				case "s":
-				System.out.println("Enter Send Mode");
+				System.out.println("Entering Send Mode");
 				try {
 					ClientSend.sendChatMessage(config, id);
-					System.out.println("Message " + id + " sent");
+					System.out.println("Message " + config.getDefaultSenderName() + "." + id + " sent"); // TODO aufruf zum Benutzername reinmachen
 					id++;
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -65,14 +65,14 @@ public class ClientMain {
 					break;
 					
 				case "r":
-					System.out.println("Enter Receive Mode");
+					System.out.println("Entering Receive Mode");
 					ClientRecv recv = new ClientRecv(config, inputMsgQueue);
 				try {
-					recv.call();
-					} catch (Exception e) {
-						e.printStackTrace();
-						System.exit(1);
-					}
+					recv.startRecv();
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.exit(1);
+				}
 					break;
 					
 				default:

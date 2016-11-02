@@ -28,7 +28,7 @@ public class ClientSend {
 		String id = config.getServerUser() + "." + msgId; //concat id with sendername
 		String recipient = getRecipient();
 		String messagePayload = getMessagePayload();
-		Sender.getInstance(config.getServerUser(), config.getServerPass(), config.getServerHost(), config.getDefaultSendChannel()).send(new ChatMessage(id, config.getServerUser(), recipient, messagePayload));
+		Sender.getInstance(config.getServerUser(), config.getServerPass(), config.getServerHost(), config.getDefaultSendChannel()).send(new ChatMessage(id, config.getDefaultSenderName(), recipient, messagePayload), null); //TODO richtigen Aufruf zum Benutzernamen reinmachen
 
 	}
 	
@@ -42,7 +42,7 @@ public class ClientSend {
 	 * @throws TimeoutException
 	 */
 	public static void sendRcptMessage(ClientConfig config, String msgId, String receiver, String msgPayload) throws IOException, TimeoutException{
-		Sender.getInstance(config.getServerUser(), config.getServerPass(), config.getServerHost(), config.getDefaultSendChannel()).send(new RcptMessage(msgId, config.getServerUser(), receiver, msgPayload ));
+		Sender.getInstance(config.getServerUser(), config.getServerPass(), config.getServerHost(), config.getDefaultSendChannel()).send(new RcptMessage(msgId, config.getDefaultSenderName(), receiver, msgPayload ), null); // TODO siehe 
 	}
 	
 	/**
