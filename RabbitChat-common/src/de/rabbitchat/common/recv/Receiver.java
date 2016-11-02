@@ -37,15 +37,15 @@ public class Receiver implements Callable<Integer> {
 	 * @param userName
 	 * @param pw
 	 * @param Host
-	 * @param sendChannel
+	 * @param rcvChannel
 	 * @param receivedMsgs
 	 */
-	private Receiver(String userName, String pw, String Host, String sendChannel, LinkedBlockingQueue<Message> receivedMsgs) {
+	private Receiver(String userName, String pw, String Host, String rcvChannel, LinkedBlockingQueue<Message> receivedMsgs) {
 		this.factory = new ConnectionFactory();
 		this.factory.setUsername(userName);
 		this.factory.setPassword(pw);
 		this.factory.setHost(Host);
-		this.receiveChannel = sendChannel;
+		this.receiveChannel = rcvChannel;
 		this.receivedMsgs = receivedMsgs;
 
 	}

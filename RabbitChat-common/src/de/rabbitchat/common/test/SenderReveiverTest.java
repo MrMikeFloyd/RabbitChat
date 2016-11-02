@@ -16,7 +16,7 @@ public class SenderReveiverTest {
 		ChatMessage cm1 = new ChatMessage("Simon1234", "Simon", "Maik", "Sender base class messaging test.");
 
 		try {
-			s1.send(cm1);
+			s1.send(cm1, null);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

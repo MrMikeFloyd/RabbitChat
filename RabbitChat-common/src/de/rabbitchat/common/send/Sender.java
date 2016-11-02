@@ -16,30 +16,30 @@ import de.rabbitchat.common.message.Message;
  *
  */
 public class Sender {
-	
+
 	private static Sender senderSingleton;
-	
+
 	private ConnectionFactory factory;
 	private Connection connection;
 	private Channel channel;
-	private String sendChannel;
-	
+	private String defaultSendChannel;
+
 	/**
 	 * 
 	 * @param userName
 	 * @param pw
 	 * @param Host
-	 * @param sendChannel
+	 * @param defSndChannel
 	 */
-	private Sender(String userName, String pw, String Host, String sendChannel) {
+	private Sender(String userName, String pw, String Host, String defSndChannel) {
 		this.factory = new ConnectionFactory();
 		this.factory.setUsername(userName);
 		this.factory.setPassword(pw);
 		this.factory.setHost(Host);
-		this.sendChannel = sendChannel;
+		this.defaultSendChannel = defSndChannel;
 
 	}
-	
+
 	/**
 	 * 
 	 * @param userName
@@ -48,14 +48,13 @@ public class Sender {
 	 * @param sendChannel
 	 * @return
 	 */
-	public static Sender getInstance(String userName, String pw, String Host, String sendChannel){
+	public static Sender getInstance(String userName, String pw, String Host, String sendChannel) {
 		if (senderSingleton == null) {
 			senderSingleton = new Sender(userName, pw, Host, sendChannel);
 		}
 		return senderSingleton;
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param queueName
@@ -63,30 +62,39 @@ public class Sender {
 	 * @throws IOException
 	 * @throws TimeoutException
 	 */
-	private  void enqueue(String queueName, String messageString) throws IOException, TimeoutException{
+	private void enqueue(String queueName, String messageString) throws IOException, TimeoutException {
 		connection = factory.newConnection();
-	    channel = connection.createChannel();
-	   
-	    channel.basicPublish("", queueName, null, messageString.getBytes("UTF-8"));
-	    System.out.println("Sender Logging: [x] Sent '" + messageString + "'");
+		channel = connection.createChannel();
 
-	    channel.close();
-	    connection.close();
+		channel.basicPublish("", queueName, null, messageString.getBytes("UTF-8"));
+		System.out.println("Sender Logging: [x] Sent '" + messageString + "'");
+
+		channel.close();
+		connection.close();
 	}
 
-	
 	/**
+	 * Performs message enqueuing into specified destination channel. If no
+	 * destination channel is supplied, the Sender's default send channel is
+	 * being used.
 	 * 
 	 * @param msg
 	 * @throws IOException
 	 * @throws TimeoutException
 	 */
-	public  void send(Message msg) throws IOException, TimeoutException{
+	public void send(Message msg, String destinationChannel) throws IOException, TimeoutException {
+
+		String destChannel;
+		if (destinationChannel == null) {
+			destChannel = defaultSendChannel;
+		} else {
+			destChannel = destinationChannel;
+		}
+
 		String msgPayload = msgToXML(msg);
-		enqueue(sendChannel, msgPayload);
+		enqueue(destChannel, msgPayload);
 	}
-	
-	
+
 	/**
 	 * 
 	 * @param msg
@@ -94,7 +102,7 @@ public class Sender {
 	 */
 	private String msgToXML(Message msg) {
 		XStream xstream = new XStream();
-		return(xstream.toXML(msg));
+		return (xstream.toXML(msg));
 	}
-		
+
 }
