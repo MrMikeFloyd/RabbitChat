@@ -1,0 +1,17 @@
+<de.rabbitchat.confighandler.ServerConfig>
+  <confType>SERVER</confType>
+  <serverHost>localhost</serverHost>
+  <serverUser>rabbitChat-Router</serverUser>
+  <serverPass>passwd123</serverPass>
+  <defaultReceiveChannel>recvChannel001</defaultReceiveChannel>
+  <queueRecipientMap>
+    <entry>
+      <string>Maik</string>
+      <string>qNameMaik</string>
+    </entry>
+    <entry>
+      <string>Simon</string>
+      <string>qNameSimon</string>
+    </entry>
+  </queueRecipientMap>
+</de.rabbitchat.confighandler.ServerConfig>

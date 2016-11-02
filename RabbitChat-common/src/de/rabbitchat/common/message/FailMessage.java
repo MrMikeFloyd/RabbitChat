@@ -8,7 +8,7 @@ package de.rabbitchat.common.message;
  */
 public class FailMessage extends Message {
 
-	public FailMessage(int messageId, String messageSender, String messageRecipient, String messagePayload) {
+	public FailMessage(String messageId, String messageSender, String messageRecipient, String messagePayload) {
 		super(messageId, MsgType.FAIL, messageSender, messageRecipient, messagePayload);
 	}
 

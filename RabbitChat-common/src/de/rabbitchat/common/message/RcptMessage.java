@@ -8,7 +8,7 @@ package de.rabbitchat.common.message;
  */
 public class RcptMessage extends Message {
 
-	public RcptMessage(int messageId,String messageSender, String messageRecipient, String messagePayload) {
+	public RcptMessage(String messageId, String messageSender, String messageRecipient, String messagePayload) {
 		super(messageId, MsgType.RCPT, messageSender, messageRecipient, messagePayload);
 	}
 

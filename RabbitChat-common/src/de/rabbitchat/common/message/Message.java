@@ -13,15 +13,14 @@ import java.util.Date;
  */
 public class Message {
 
-	private int id;
+	private String id;
 	private MsgType type;
 	private String recipient;
 	private String sender;
 	private String payload;
 	private Date crtDate;
-	
 
-	public Message(int messageId, MsgType messageType, String messageSender, String messageRecipient, String messagePayload) {
+	public Message(String messageId, MsgType messageType, String messageSender, String messageRecipient, String messagePayload) {
 		this.id = messageId;
 		this.type = messageType;
 		this.recipient = messageRecipient;
@@ -34,7 +33,7 @@ public class Message {
 	 * Getters. Messages must not be changed after initial creation.
 	 */
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -49,7 +48,7 @@ public class Message {
 	public String getPayload() {
 		return payload;
 	}
-	
+
 	public String getSender() {
 		return sender;
 	}
