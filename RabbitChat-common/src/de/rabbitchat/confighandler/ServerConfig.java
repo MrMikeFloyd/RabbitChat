@@ -14,18 +14,23 @@ public class ServerConfig extends Configuration {
 	private String serverHost;
 	private String serverUser;
 	private String serverPass;
+	// Channel on which to listen for incoming messages
 	private String defaultReceiveChannel;
-
+	// Channel for messages unrouteable messages (i.e. recipient unknown)
+	private String deadLetterChannel;
 	// Recipient List (assigns recipient names to queue names)
 	private Map<String, String> queueRecipientMap;
 
-	public ServerConfig(String srvHost, String srvUser, String srvPass, String defRcvChannel, Map<String, String> qMap) {
+	// Constructor.
+	public ServerConfig(String srvHost, String srvUser, String srvPass, String defRcvChannel, String deadLetterChnl,
+			Map<String, String> qMap) {
 		this.confType = ConfigurationType.SERVER;
 
 		this.serverHost = srvHost;
 		this.serverUser = srvUser;
 		this.serverPass = srvPass;
 		this.defaultReceiveChannel = defRcvChannel;
+		this.deadLetterChannel = deadLetterChnl;
 		this.queueRecipientMap = qMap;
 	}
 
@@ -45,6 +50,10 @@ public class ServerConfig extends Configuration {
 
 	public String getDefaultReceiveChannel() {
 		return defaultReceiveChannel;
+	}
+
+	public String getDeadLetterChannel() {
+		return deadLetterChannel;
 	}
 
 	public Map<String, String> getQueueRecipientMap() {

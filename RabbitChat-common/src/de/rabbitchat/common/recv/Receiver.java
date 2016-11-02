@@ -72,7 +72,7 @@ public class Receiver implements Callable<Integer> {
 	 * @throws IOException
 	 * @throws TimeoutException
 	 */
-	public void startReceiving() throws IOException, TimeoutException {
+	private void startReceiving() throws IOException, TimeoutException {
 		connection = factory.newConnection();
 		channel = connection.createChannel();
 		Consumer consumer = new DefaultConsumer(channel) {

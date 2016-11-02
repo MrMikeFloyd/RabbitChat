@@ -14,14 +14,16 @@ public class ClientConfig extends Configuration {
 	private String serverPass;
 	private String defaultSendChannel;
 	private String receiveChannel;
+	private String defaultSenderName;
 
-	public ClientConfig(String srvHost, String srvUser, String srvPass, String defSndChannel, String recvChannel) {
+	public ClientConfig(String srvHost, String srvUser, String srvPass, String defSndChannel, String recvChannel, String defSenderName) {
 		this.confType = ConfigurationType.CLIENT;
 		this.serverHost = srvHost;
 		this.serverPass = srvPass;
 		this.serverUser = srvUser;
 		this.defaultSendChannel = defSndChannel;
 		this.receiveChannel = recvChannel;
+		this.defaultSenderName = defSenderName;
 
 	}
 
@@ -44,6 +46,10 @@ public class ClientConfig extends Configuration {
 
 	public String getReceiveChannel() {
 		return receiveChannel;
+	}
+
+	public String getDefaultSenderName() {
+		return defaultSenderName;
 	}
 
 }

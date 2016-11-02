@@ -18,7 +18,7 @@ public class xStreamTest {
 		m1.put("Maik", "qNameMaik");
 		m1.put("Simon", "qNameSimon");
 
-		ServerConfig s1 = new ServerConfig("localhost", "rabbitChat-Router", "passwd123", "recvChannel001", m1);
+		ServerConfig s1 = new ServerConfig("localhost", "rabbitChat-Router", "passwd123", "recvChannel001", "deadLetterChannel001", m1);
 
 		String xml = xstream.toXML(s1);
 

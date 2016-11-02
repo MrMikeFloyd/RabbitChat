@@ -4,6 +4,7 @@
   <serverUser>rabbitChat-Router</serverUser>
   <serverPass>passwd123</serverPass>
   <defaultReceiveChannel>recvChannel001</defaultReceiveChannel>
+  <deadLetterChannel>deadLetterChannel001</deadLetterChannel>
   <queueRecipientMap>
     <entry>
       <string>Maik</string>
