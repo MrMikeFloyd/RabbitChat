@@ -51,12 +51,12 @@ public class ClientRecv  {
 			
 			switch (m1.getType()) {
 			case CHAT:
-				System.out.println("Incoming Message from " + m1.getRecipient());
+				System.out.println("Incoming Message from " + m1.getSender());
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 				String date = sdf.format(m1.getCrtDate());
 				System.out.println("Created at: " + date);
-				System.out.println("---------\n" + m1.getPayload()+"\n---------\nReading confirmation is sent.");
-				String msg = "Message: " + m1.getId() + " was readed";
+				System.out.println("---------\n" + m1.getPayload()+"\n---------\nReading confirmation was sent.");
+				String msg = "Message: " + m1.getId() + " was received";
 				ClientSend.sendRcptMessage(config, m1.getId(), m1.getSender(), msg);
 				break;
 				

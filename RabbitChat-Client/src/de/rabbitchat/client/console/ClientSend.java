@@ -25,7 +25,7 @@ public class ClientSend {
 	 * @throws TimeoutException
 	 */
 	public static void sendChatMessage(ClientConfig config, int msgId) throws IOException, TimeoutException{
-		String id = config.getServerUser() + "." + msgId; //concat id with sendername
+		String id = config.getDefaultSenderName() + "." + msgId; //concat id with sendername
 		String recipient = getRecipient();
 		String messagePayload = getMessagePayload();
 		Sender.getInstance(config.getServerUser(), config.getServerPass(), config.getServerHost(), config.getDefaultSendChannel()).send(new ChatMessage(id, config.getDefaultSenderName(), recipient, messagePayload), null); //TODO richtigen Aufruf zum Benutzernamen reinmachen

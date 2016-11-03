@@ -1,6 +1,8 @@
 <de.rabbitchat.confighandler.ClientConfig>
 <serverHost>192.168.2.108</serverHost>
-<serverUser>Test</serverUser>
-<serverPass>blabla</serverPass>
-<defaultSendChannel>defaultChnl</defaultSendChannel>
+<serverUser>rabbitchat-client-2</serverUser>
+<serverPass>rabbitclient2!</serverPass>
+<defaultSendChannel>rabbitchat-queue-snd-global-in</defaultSendChannel>
+<receiveChannel>rabbitchat-queue-rcv-client2</receiveChannel>
+<defaultSenderName>Simon</defaultSenderName>
 </de.rabbitchat.confighandler.ClientConfig>
