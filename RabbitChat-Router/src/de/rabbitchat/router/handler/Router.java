@@ -74,7 +74,7 @@ public class Router implements Callable<Integer> {
 
 		// Only process message if it is a chat message, throw to Dead Letter
 		// Channel if otherwise
-		if (msg.getType() == MsgType.CHAT) {
+		if (msg.getType() == MsgType.CHAT || msg.getType() == MsgType.RCPT) {
 			String recipient = msg.getRecipient();
 			String targetChannel = getTargetChannel(recipient);
 			System.out.println("[ROUTER-POSTROUTE]: Message id " + msg.getId() + " is being forwarded to channel " + targetChannel + ".");

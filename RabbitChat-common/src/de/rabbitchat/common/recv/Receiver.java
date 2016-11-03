@@ -84,7 +84,7 @@ public class Receiver implements Callable<Integer> {
 				Message msg = xmlToMsg(message);
 
 				receivedMsgs.add(msg);
-				System.out.println(" [x] Received '" + message + "'");
+				// System.out.println(" [x] Received '" + message + "'");
 			}
 		};
 		channel.basicConsume(receiveChannel, true, consumer);

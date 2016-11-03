@@ -67,7 +67,8 @@ public class Sender {
 		channel = connection.createChannel();
 
 		channel.basicPublish("", queueName, null, messageString.getBytes("UTF-8"));
-		System.out.println("Sender Logging: [x] Sent '" + messageString + "'");
+		// System.out.println("Sender Logging: [x] Sent '" + messageString +
+		// "'");
 
 		channel.close();
 		connection.close();
