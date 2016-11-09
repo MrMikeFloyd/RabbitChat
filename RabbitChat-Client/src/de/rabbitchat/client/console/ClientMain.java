@@ -56,7 +56,8 @@ public class ClientMain {
 				System.out.println("Entering Send Mode");
 				try {
 					ClientSend.sendChatMessage(config, id);
-					System.out.println("Message " + config.getDefaultSenderName() + "." + id + " sent"); // TODO aufruf zum Benutzername reinmachen
+					System.out.println("Message " + config.getDefaultSenderName() + "." + id + " sent");
+					System.out.println("\n---------------------------------------------------");
 					id++;
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -51,6 +51,7 @@ public class ClientSend {
 	 * @throws IOException
 	 */
 	private static String getRecipient() throws IOException{
+		System.out.println("\n---------------------------------------------------");
 		System.out.println("Enter Recipient:");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String receiver = br.readLine();
@@ -63,6 +64,7 @@ public class ClientSend {
 	 * @throws IOException
 	 */
 	private static String getMessagePayload() throws IOException{
+		System.out.println("\n---------------------------------------------------");
 		System.out.println("Enter Message");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String messagePayload = br.readLine();
