@@ -72,9 +72,10 @@ public class Router implements Callable<Integer> {
 	 */
 	private void routeMessage(Message msg) throws IOException, TimeoutException {
 
-		// Only process message if it is a chat message, throw to Dead Letter
-		// Channel if otherwise
-		if (msg.getType() == MsgType.CHAT || msg.getType() == MsgType.RCPT) {
+		// Only process message if it is a chat, rcpt or fail message, throw to
+		// invalid
+		// message channel otherwise
+		if (msg.getType() == MsgType.CHAT || msg.getType() == MsgType.RCPT || msg.getType() == MsgType.FAIL) {
 			String recipient = msg.getRecipient();
 			String targetChannel = getTargetChannel(recipient);
 			System.out.println("[ROUTER-POSTROUTE]: Message id " + msg.getId() + " is being forwarded to channel " + targetChannel + ".");
@@ -82,9 +83,9 @@ public class Router implements Callable<Integer> {
 			messageSender.send(msg, targetChannel);
 		} else {
 
-			System.out
-					.println("[ROUTER-POSTROUTE]: Message id " + msg.getId() + " cannot be assigned - forwarding to dead letter channel. ");
-			messageSender.send(msg, currentConfig.getDeadLetterChannel());
+			System.out.println(
+					"[ROUTER-POSTROUTE]: Message with id " + msg.getId() + " is of unknown type - forwarding to invalid message channel. ");
+			messageSender.send(msg, currentConfig.getInvalidMessageChannel());
 		}
 
 	}

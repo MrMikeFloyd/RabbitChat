@@ -9,19 +9,19 @@ import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
 /**
- * Reads configuration file and transforms it into respective config object.
+ * Reads configuration files and transforms them into config object to bes used
+ * by Client/Server instances.
  * 
  * @author maik
  *
  */
 public class ConfigReader {
 
+	// Config file name
 	public static final String CONFIG_FILE_NAME = "config.xml";
 
 	/**
-	 * Reads input config file and creates a Config object from it. Determines
-	 * the type of config that will be used (Client|Server) depending on the
-	 * input file.
+	 * Reads input config file (CLIENT) and creates a Config object from it.
 	 * 
 	 * @return
 	 * @throws FileNotFoundException
@@ -38,9 +38,7 @@ public class ConfigReader {
 	}
 
 	/**
-	 * Reads input config file and creates a Config object from it. Determines
-	 * the type of config that will be used (Client|Server) depending on the
-	 * input file.
+	 * Reads input config file (SERVER) and creates a Config object from it.
 	 * 
 	 * @return
 	 * @throws FileNotFoundException

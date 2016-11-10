@@ -17,13 +17,15 @@ import com.thoughtworks.xstream.XStream;
 import de.rabbitchat.common.message.Message;
 
 /**
- * Receiver base class. Callable, can thus be executed in a separate subthread.
+ * Receiver base class. Encapsules functionality for decoding and receiving
+ * messages. Callable, can thus be executed in a separate subthread.
  * 
  * @author KleinfeldS
  *
  */
 public class Receiver implements Callable<Integer> {
 
+	// Reference to singleton instance of this class.
 	private static Receiver receiverSingleton;
 
 	private ConnectionFactory factory;
@@ -33,6 +35,7 @@ public class Receiver implements Callable<Integer> {
 	private LinkedBlockingQueue<Message> receivedMsgs;
 
 	/**
+	 * Constructor for receiver class.
 	 * 
 	 * @param userName
 	 * @param pw
@@ -51,6 +54,8 @@ public class Receiver implements Callable<Integer> {
 	}
 
 	/**
+	 * Returns instance of Receiver class. Implements singleton pattern, so only
+	 * one instance of Sender can be used at any given time.
 	 * 
 	 * @param userName
 	 * @param pw
@@ -68,6 +73,8 @@ public class Receiver implements Callable<Integer> {
 	}
 
 	/**
+	 * Performs receiving of messages from the assigned message channel. Writes
+	 * messages to receivedMsgs queue for further processing.
 	 * 
 	 * @throws IOException
 	 * @throws TimeoutException
@@ -84,16 +91,17 @@ public class Receiver implements Callable<Integer> {
 				Message msg = xmlToMsg(message);
 
 				receivedMsgs.add(msg);
-				// System.out.println(" [x] Received '" + message + "'");
 			}
 		};
 		channel.basicConsume(receiveChannel, true, consumer);
 	}
 
 	/**
+	 * Performs conversion of XML-encoded message object to an instance of
+	 * Message.
 	 * 
 	 * @param xml
-	 * @return
+	 * @return the corresponding Message object.
 	 */
 	private Message xmlToMsg(String xml) {
 		XStream xstream = new XStream();

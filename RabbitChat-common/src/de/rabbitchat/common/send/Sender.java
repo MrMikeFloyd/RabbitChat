@@ -11,12 +11,15 @@ import com.thoughtworks.xstream.XStream;
 import de.rabbitchat.common.message.Message;
 
 /**
+ * Sender base class, encapsules functionality for encoding and sending
+ * messages.
  * 
  * @author KleinfeldS
  *
  */
 public class Sender {
 
+	// Reference to singleton instance of this class.
 	private static Sender senderSingleton;
 
 	private ConnectionFactory factory;
@@ -25,6 +28,7 @@ public class Sender {
 	private String defaultSendChannel;
 
 	/**
+	 * Constructor for Sender class.
 	 * 
 	 * @param userName
 	 * @param pw
@@ -41,6 +45,8 @@ public class Sender {
 	}
 
 	/**
+	 * Returns instance of Sender class. Implements singleton pattern, so only
+	 * one instance of Sender can be used at any given time.
 	 * 
 	 * @param userName
 	 * @param pw
@@ -56,6 +62,8 @@ public class Sender {
 	}
 
 	/**
+	 * Performs the final enqueue operation using RabbitMQ's basic publish
+	 * functionality.
 	 * 
 	 * @param queueName
 	 * @param messageString
@@ -67,8 +75,6 @@ public class Sender {
 		channel = connection.createChannel();
 
 		channel.basicPublish("", queueName, null, messageString.getBytes("UTF-8"));
-		// System.out.println("Sender Logging: [x] Sent '" + messageString +
-		// "'");
 
 		channel.close();
 		connection.close();
@@ -97,9 +103,10 @@ public class Sender {
 	}
 
 	/**
+	 * Converts a message to XML format.
 	 * 
 	 * @param msg
-	 * @return
+	 * @return the XML-encoded message.
 	 */
 	private String msgToXML(Message msg) {
 		XStream xstream = new XStream();

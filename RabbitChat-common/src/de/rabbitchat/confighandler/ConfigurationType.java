@@ -1,7 +1,7 @@
 package de.rabbitchat.confighandler;
 
 /**
- * Enum indicating the type of configuration
+ * Enum indicating the type of configuration.
  * 
  * @author maik
  *

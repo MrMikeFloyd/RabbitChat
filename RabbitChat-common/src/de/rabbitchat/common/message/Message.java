@@ -5,8 +5,6 @@ import java.util.Date;
 /**
  * Generic message base class with message type used both in client and server
  * applications.<br>
- * Protected access as class may only be instantiated by the respective subclass
- * constructor.
  * 
  * @author maik
  *
@@ -20,6 +18,15 @@ public class Message {
 	private String payload;
 	private Date crtDate;
 
+	/**
+	 * Constructor for messages.
+	 * 
+	 * @param messageId
+	 * @param messageType
+	 * @param messageSender
+	 * @param messageRecipient
+	 * @param messagePayload
+	 */
 	public Message(String messageId, MsgType messageType, String messageSender, String messageRecipient, String messagePayload) {
 		this.id = messageId;
 		this.type = messageType;

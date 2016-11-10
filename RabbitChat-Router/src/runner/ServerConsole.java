@@ -16,10 +16,11 @@ public class ServerConsole {
 		System.out.println("RabbitChat Server");
 		System.out.println("-------------------------------");
 
-		ServerConfig serverConfig = new ServerConfig("", "", "", "", "", null);
+		// Start with an empty config
+		ServerConfig serverConfig = new ServerConfig("", "", "", "", "", "", null);
 		LinkedBlockingQueue<Message> receivedMsgs = new LinkedBlockingQueue<Message>();
 
-		// Load Server config
+		// Populate the Server config
 		try {
 			System.out.println("[MAIN]: Loading configuration file.");
 			serverConfig = ConfigReader.readServerConfigFile();
