@@ -1,6 +1,8 @@
 <de.rabbitchat.confighandler.ClientConfig>
-<serverHost>192.168.2.108</serverHost>
-<serverUser>Test</serverUser>
-<serverPass>blabla</serverPass>
-<defaultSendChannel>defaultChnl</defaultSendChannel>
+<serverHost>RabbitMQ Server Host</serverHost>
+<serverUser>RabbitMQ Client UserName</serverUser>
+<serverPass>RabbitMQ Client Password </serverPass>
+<defaultSendChannel>RabbitMQ Send Channel</defaultSendChannel>
+<receiveChannel>RabbitMQ Receive Channel</receiveChannel>
+<defaultSenderName>Client Name</defaultSenderName>
 </de.rabbitchat.confighandler.ClientConfig>
